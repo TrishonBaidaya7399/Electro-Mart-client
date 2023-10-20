@@ -17,8 +17,9 @@ const Navbar = () => {
   }
   useEffect(() => {
     // Fetch cart items from the server and count the items for the current user
+    //https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/
     if (user) {
-      fetch('http://localhost:5000/cartitems') // Update the URL to match your server endpoint
+      fetch('https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/cartitems') // Update the URL to match your server endpoint
         .then((response) => response.json())
         .then((cartItems) => {
           const userCartItems = cartItems.filter((item) => item.userId === user._id);

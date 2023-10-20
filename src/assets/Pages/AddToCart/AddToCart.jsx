@@ -10,7 +10,7 @@ const AddToCart = () => {
     const currentUser = { _id: user._id }; 
 
     useEffect(() => {
-        fetch('http://localhost:5000/cartitems') // Update the URL to match your server endpoint
+        fetch('https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/cartitems') // Update the URL to match your server endpoint
             .then((response) => response.json())
             .then((cartItems) => {
                 const itemsAdded = cartItems.filter((item) => item.userId === currentUser._id);
@@ -42,7 +42,7 @@ const AddToCart = () => {
     };
     const handleDelete = (productId) => {
         console.log(productId);
-        fetch(`http://localhost:5000/cartitems/${productId}`, {
+        fetch(`https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/cartitems/${productId}`, {
             method: "DELETE"
         })
         .then(res=> res.json())

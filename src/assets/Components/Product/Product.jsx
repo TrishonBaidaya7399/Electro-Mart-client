@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const Product = ({product}) => {
     return (
 <div className="pb-6">
-            <div className="drop-shadow-lg text-center w-fit h-[420px] rounded-md">
+            <div className="drop-shadow-lg text-center w-fit border-2 border-gray-400 p-4  rounded-md">
             <div className="prod-img w-[200px] h-[200px] mx-auto">
             <img className="h-full rounded-t-lg" src={product.photo} alt="" />
             </div>

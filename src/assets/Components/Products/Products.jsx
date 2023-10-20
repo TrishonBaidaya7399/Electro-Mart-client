@@ -20,7 +20,7 @@ const Products = ({products}) => {
             </>
             : 
             <div className="flex items-center justify-center">
-               <img className='w-[50%] py-8' src="https://i.ibb.co/vJ2sgJq/product-not-found-removebg-preview.png" alt="" />
+               <img className='w-[100%] py-8' src="https://i.ibb.co/vJ2sgJq/product-not-found-removebg-preview.png" alt="" />
             </div>
         }   
          
