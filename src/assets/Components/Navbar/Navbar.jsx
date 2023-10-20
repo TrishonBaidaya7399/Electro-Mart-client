@@ -51,7 +51,7 @@ const Navbar = () => {
         <div className="dropdown dropdown-end flex items-center">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full border-2 border-blue-700">
-              <img src={user.photoUrl ? user.photoUrl : 'https://i.ibb.co/qnT81gF/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg'} />
+              <img src={user.photoURL ? user.photoURL : 'https://i.ibb.co/qnT81gF/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg'} />
             </div>
           </label>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-[160px] z-[1] p-2 shadow bg-base-100 rounded-box w-52">
