@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 // import { AiOutlineUser } from 'react-icons/ai';
-import { useContext,  } from "react";
+import { useContext, useState,  } from "react";
 
 // import Swal from "sweetalert2";
 import { NavLink } from "react-router-dom";
@@ -10,10 +10,15 @@ import Swal from "sweetalert2";
 
 
 const SignUp = () => {
-    const {createUser, updateUserProfile}= useContext(AuthContext)
+    const {createUser, updateUserProfile}= useContext(AuthContext);
+     const [passwordError, setPasswordError] = useState(""); 
+     const [error, setError] = useState('')
+
     // const [user, setUser] = useState(null)
     const handleSignUp = e =>{
         e.preventDefault();
+
+        setPasswordError("");
         console.log('add coffee button clicked!');
         const form = e.target;
         const name = form.name.value;
@@ -21,6 +26,14 @@ const SignUp = () => {
         const password = form.password.value;
         const photo = form.photo.value;
         const newUserData = {name, email, password, photo};
+        const passwordPattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(.{6,})$/;
+
+         if (!password.match(passwordPattern)) {
+          setPasswordError("Password must include at least 6 characters, a capital letter, and a special symbol");
+           return; // Stop sign-up process if password is invalid
+          } else {
+            setPasswordError(""); // Reset the error message
+          }
         console.log(newUserData);
         createUser(email, password)
         .then(result =>{
@@ -61,6 +74,7 @@ const SignUp = () => {
         })
         .catch(error=> {
             console.error(error.message);
+            setError(error.message)
             Swal.fire({
                 title: 'Failed!',
                 text: error.message,
@@ -92,11 +106,17 @@ const SignUp = () => {
                 <div className="mt-6">
                     <h1 className="text-gray-600 text-xl font-semibold">Password</h1>
                     <input type="password" name="password" id="password" required placeholder="Enter Your Password" className="w-full bg-white border-2 border-white hover:border-gray-300 mt-4 p-3 rw-full bg-white border-2 border-white hover:border-[#331A15] mt-4 p-3 rounded-md duration-200 rounded-md duration-200"  />
+                    {passwordError && (
+              <p className="text-red-600">{passwordError}</p>
+            )}
                 </div>
                 <div className="mt-6">
                     <h1 className="text-gray-600 text-xl font-semibold">Photo URL</h1>
                     <input type="text" name="photo" id="photo" required placeholder="Enter Your Photo's URL" className="w-full bg-white border-2 border-white hover:border-gray-300 mt-4 p-3 rw-full bg-white border-2 border-white hover:border-[#331A15] mt-4 p-3 rounded-md duration-200 rounded-md duration-200"  />
                 </div>
+                {error && (
+                  <p className="text-red-600">{error}</p>
+                   )}
                 <input type="submit" value="Sign Up" className="w-full mt-6 bg-[#D2B48C] border-2 border-[#331A15] rounded-md py-4 text-center text-[#331A15] font-bold" />
                 <NavLink to="/signin"><p className="text-red-600">Already have an Account? Please Sign In</p></NavLink>
             </form>

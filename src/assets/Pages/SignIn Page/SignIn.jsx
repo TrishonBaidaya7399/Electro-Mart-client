@@ -1,8 +1,8 @@
 // import PropTypes from 'prop-types';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 // import backgroundImage01 from "../../assets/images/more/11.png"
 // import userPic from "../../assets/images/more/user.png"
-
+import { FcGoogle } from 'react-icons/fc';
 // import Swal from "sweetalert2";
 import { BsArrowLeft } from 'react-icons/bs';
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
@@ -10,13 +10,26 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignIn = () => {
-    const {signInUser, } = useContext(AuthContext)
+    const {signInUser, signInWithGoogle} = useContext(AuthContext)
+     const [error, setError] = useState('')
     const location = useLocation();
     const navigate = useNavigate()
     const bgStyle = {
         // backgroundImage: `url(${backgroundImage01})`,
         backGroundSize: 'cover'
     }
+    const handleGoogleSignIn = ()=>{
+        signInWithGoogle()
+        .then(result=>{
+          console.log(result.user);
+          console.log('Successfully Logged In with Google!');
+          navigate("/")
+        })
+        .catch(error=>{
+          console.error(error.message);
+          setError(error);
+        })
+      }
 
     const handleSignIn = e =>{
         e.preventDefault();
@@ -24,6 +37,7 @@ const SignIn = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+       
         console.log(email, password);
         signInUser(email, password)
         .then(result =>{
@@ -41,6 +55,7 @@ const SignIn = () => {
         })
         .catch(error=> {
             console.error(error.message);
+            setError(error.message)
         })
        
 
@@ -60,8 +75,14 @@ const SignIn = () => {
                     <h1 className="text-gray-600 text-xl font-semibold">Password</h1>
                     <input type="password" name="password" id="password" required placeholder="Enter Your Password" className="w-full bg-white border-2 border-white hover:border-gray-300 mt-4 p-3 rw-full bg-white border-2 border-white hover:border-[#331A15] mt-4 p-3 rounded-md duration-200 rounded-md duration-200"  />
                 </div>
+              
+                  {error && (
+                  <p className="text-red-600">{error}</p>
+                   )}
                 <input type="submit" value="Sign In" className="w-full mt-6 bg-[#D2B48C] border-2 border-[#331A15] rounded-md py-4 text-center text-[#331A15] font-bold" />
                 <NavLink to="/signup"><p className="text-red-600">{`Don't have an Account? Please Register`}</p></NavLink>
+                
+              <button onClick={handleGoogleSignIn} className="mt-4 border-[3px] bg-white border-t-red-600 border-l-yellow-300 border-b-green-500 border-r-blue-600 rounded-lg px-4 py-1 w-fit mx-auto flex items-center font-semibold gap-2"><FcGoogle/> Login with Google</button>
             </form>
 
            </div>

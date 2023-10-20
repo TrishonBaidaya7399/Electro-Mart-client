@@ -11,15 +11,12 @@ const ProductDetails = () => {
     const {user} = useContext(AuthContext)
 
 
-const handleAddToCart = async (e) => {
-  e.preventDefault();
-
-  // Replace 'userId' with the actual user's ID (you need to obtain this from your authentication system)
+const handleAddToCart = async (productId) => {
  const userId= user._id; 
+ console.log(productId);
   const productData = {
-    productId: product._id,
+    productId: productId,
     userId: userId ,
-    // Include any other product data you want to save (e.g., quantity, price, etc.)
   };
 
   try {
@@ -81,7 +78,7 @@ const handleAddToCart = async (e) => {
         </div>
         <div className=" flex items-center justify-center">
         <Link className="">
-        <button onClick={handleAddToCart} className="text-white font-bold text-xl bg-black rounded-full px-6 py-2 w-[20vw] mb-12">Add to cart</button>
+        <button onClick={()=>handleAddToCart(product._id)} className="text-white font-bold text-xl bg-black rounded-full px-6 py-2 w-[20vw] mb-12">Add to cart</button>
         </Link>
         </div>
     </div>

@@ -82,19 +82,19 @@ const AddToCart = () => {
                                         <div className="py-2 px-4 text-xl text-[#9873FF] border-2 border-[#9873FF] rounded-lg">${product.price}</div>
                                     </div>
                                 </div>
-                                <div className="flex ml-auto items-center">
-                                    <div className="">
-                                        <NavLink>
+                                <div className="flex ml-auto items-center flex-col">
+
+                                        <NavLink className="bg-none rounded-lg">
                                             <button onClick={()=>handleDelete(product._id)} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white text-[18px] py-[10px] px-[18px]">
                                                 DELETE
                                             </button>
                                         </NavLink>
-                                        <NavLink>
+                                        <NavLink className="bg-none rounded-lg">
                                             <button onClick={handleBuyNow} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white text-[18px] py-[10px] px-[18px]">
                                                 Buy
                                             </button>
                                         </NavLink>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
