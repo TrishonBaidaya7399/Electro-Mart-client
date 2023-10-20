@@ -9,7 +9,7 @@ import sonyLogo from "../../images/logo/sony logo.jpg"
 const Brands = () => {
     return (
         <div className="mb-12">
-            <h1 className="text-6xl text-center font-bold py-12">Our Brands</h1>
+            <h1 className="text-4xl md:text-6xl text-center font-bold py-12">Our Brands</h1>
             <div className="grid grid-cols-1 w-fit md:grid-cols-2 lg:grid-cols-3 mx-auto items-center justify-center gap-8">
                 <div  className=" bg-gray-200 text-center rounded-lg">
                     <img className="h-[200px] w-[300px] md:h-[250px] md:w-[400px] p-2 rounded-2xl" src={samsungLogo} alt="Samsung Logo" />

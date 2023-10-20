@@ -14,8 +14,8 @@ const PopularProducts = ({ products }) => {
   };
 
   return (
-    <div className="mb-12 text-center">
-      <h1 className="text-6xl text-center font-bold py-12">Just For You</h1>
+    <div className="mb-6 md:mb-12 text-center">
+      <h1 className="text-4xl md:text-6xl text-center font-bold py-12">Just For You</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-[100px]">
         {
         products.slice(0, visibleProducts).map((product) => (

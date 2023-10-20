@@ -3,8 +3,8 @@
 
 const ProductCategories = () => {
     return (
-        <div className="mb-12 text-center">
-        <h1 className="text-6xl text-center font-bold py-12">Electronic Appliances</h1>
+        <div className="mb-6 md:mb-12 text-center">
+        <h1 className="text-4xl md:text-6xl text-center font-bold py-12">Electronic Appliances</h1>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mx-[50px]">
             <div className=" h-fit p-8 flex flex-col items-center justify-center">
                 <img className="w-[150px] h-[150px] mx-auto" src="https://i.ibb.co/fFZPdHW/Screenshot-2023-10-18-204318-removebg-preview.png" alt="" />
