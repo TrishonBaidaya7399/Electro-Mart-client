@@ -40,7 +40,7 @@ const PopularProducts = ({ products }) => {
         <div className="text-center mt-4">
           <button
             onClick={loadMore}
-            className="rounded-full px-6 py-2 bg-blue-500 text-white font-semibold duration-200 hover.bg-blue-700"
+            className="rounded-full px-6 py-2 bg-blue-500 text-white font-semibold duration-200 hover:bg-blue-700"
           >
             See More
           </button>
@@ -49,7 +49,7 @@ const PopularProducts = ({ products }) => {
         <div className="text-center mt-4">
           <button
             onClick={loadLess}
-            className="rounded-full px-6 py-2 bg-red-500 text-white font-semibold duration-200 hover.bg-red-700"
+            className="rounded-full px-6 py-2 bg-black text-white font-semibold duration-200 hover:bg-gray-700"
           >
             See Less
           </button>

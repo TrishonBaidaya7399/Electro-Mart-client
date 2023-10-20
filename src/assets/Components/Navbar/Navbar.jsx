@@ -1,11 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../images/logo/logo3.png";
 import "./Navbar.css"
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext)
+  const {user, logOut} = useContext(AuthContext);
+  const [cartItemCount, setCartItemCount] = useState(0);
   console.log(user?.photoURL);
   const handleSignOut=()=>{
     logOut()
@@ -14,6 +15,21 @@ const Navbar = () => {
     console.error(error.message);  
     })
   }
+  useEffect(() => {
+    // Fetch cart items from the server and count the items for the current user
+    if (user) {
+      fetch('http://localhost:5000/cartitems') // Update the URL to match your server endpoint
+        .then((response) => response.json())
+        .then((cartItems) => {
+          const userCartItems = cartItems.filter((item) => item.userId === user._id);
+          setCartItemCount(userCartItems.length);
+        })
+        .catch((error) => {
+          console.error("Error fetching cart items:", error);
+        });
+    }
+  }, [user]);
+
   return (
     <div className="navbar bg-gray-200 lg:px-[100px]">
       <div className="navbar-start">
@@ -23,15 +39,50 @@ const Navbar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            {NavLinks}
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-200 rounded-box w-[150px]">
+             <div className="flex flex-col gap-2">
+    
+    <NavLink to="/" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
+    <li className=" text-lg font-semibold hover:font-bold duration-200">Home</li>
+    </NavLink>
+  
+    <NavLink to="/addproduct" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
+    <li className=" text-lg font-semibold hover:font-bold duration-200">Add Products</li>
+    </NavLink>
+
+    {
+      user 
+      ?  ''
+      :  <NavLink to="/signin" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
+      <li className=" text-lg font-semibold hover:font-bold duration-200">Sign In</li>
+      </NavLink>
+    }
+   
+  </div>
           </ul>
         </div>
         <img className="w-[200px]" src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {NavLinks}
+           <div className="flex gap-8">
+    
+    <NavLink to="/" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
+    <li className=" text-lg font-semibold hover:font-bold duration-200">Home</li>
+    </NavLink>
+  
+    <NavLink to="/addproduct" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
+    <li className=" text-lg font-semibold hover:font-bold duration-200">Add Product</li>
+    </NavLink>
+    {
+      user 
+      ?  ''
+      :  <NavLink to="/signin" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
+      <li className=" text-lg font-semibold hover:font-bold duration-200">Sign In</li>
+      </NavLink>
+    }
+   
+  </div>
         </ul>
       </div>
       <div className="navbar-end">
@@ -44,7 +95,7 @@ const Navbar = () => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
-            <span className="badge badge-sm indicator-item">8</span>
+            <span className="badge badge-sm indicator-item">{cartItemCount}</span>
             </Link>
           </div>
         </label>
@@ -65,7 +116,7 @@ const Navbar = () => {
         </div>
       </>
         :
-        <NavLink to="/signin" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }><button>Login</button></NavLink>
+        ''
       }
         
       </div>
@@ -73,26 +124,5 @@ const Navbar = () => {
   );
 };
 
-// const activeLinkStyle = {
-//   color: "blue", // Set the active text color to blue
-//   backgroundColor: "transparent", // Remove the background color
-// };
-//className=" text-lg font-semibold hover:font-bold duration-200"
-const NavLinks = (
-  <div className="flex gap-8">
-    
-    <NavLink to="/" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
-    <li className=" text-lg font-semibold hover:font-bold duration-200">Home</li>
-    </NavLink>
-  
-    <NavLink to="/addproduct" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
-    <li className=" text-lg font-semibold hover:font-bold duration-200">Add Products</li>
-    </NavLink>
-
-    <NavLink to="/signin" className={({ isActive }) =>isActive ? " text-lg font-semibold font-bold duration-200 bg-[transparent] text-blue-700 font-bold" : " text-lg font-semibold font-bold duration-200" }>
-    <li className=" text-lg font-semibold hover:font-bold duration-200">Sign In</li>
-    </NavLink>
-  </div>
-);
 
 export default Navbar;

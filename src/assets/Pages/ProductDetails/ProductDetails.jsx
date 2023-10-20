@@ -1,9 +1,60 @@
 // import PropTypes from 'prop-types';
-
-import { Link, useLoaderData } from "react-router-dom";
+import Swal from 'sweetalert2'
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
+// import { saveAddToCart } from '../../../Utility/localstorage';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const ProductDetails = () => {
-    const product = useLoaderData()
+    const navigate = useNavigate(); 
+    const product = useLoaderData();
+    const {user} = useContext(AuthContext)
+
+
+const handleAddToCart = async (e) => {
+  e.preventDefault();
+
+  // Replace 'userId' with the actual user's ID (you need to obtain this from your authentication system)
+ const userId= user._id; 
+  const productData = {
+    productId: product._id,
+    userId: userId ,
+    // Include any other product data you want to save (e.g., quantity, price, etc.)
+  };
+
+  try {
+    const response = await fetch('http://localhost:5000/cartitems', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(productData),
+    });
+
+    if (response.ok) {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Product added to cart successfully!',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Go to cart',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/addtocart');
+        }
+      });
+    } else {
+      // Handle error
+      console.error('Failed to add the product to the cart');
+    }
+  } catch (error) {
+    // Handle fetch error
+    console.error(error);
+  }
+};
+
     return (
         <div className="">
         <div className="drop-shadow-lg bg-gray-200 mx-[300px] my-[50px] ">
@@ -30,7 +81,7 @@ const ProductDetails = () => {
         </div>
         <div className=" flex items-center justify-center">
         <Link className="">
-        <button className="text-white font-bold text-xl bg-black rounded-full px-6 py-2 w-[20vw] mb-12">Add to cart</button>
+        <button onClick={handleAddToCart} className="text-white font-bold text-xl bg-black rounded-full px-6 py-2 w-[20vw] mb-12">Add to cart</button>
         </Link>
         </div>
     </div>
