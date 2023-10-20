@@ -10,10 +10,10 @@ const Product = ({product}) => {
             <img className="h-full rounded-t-lg" src={product.photo} alt="" />
             </div>
             <div className="description p-4">
-                <h1>{product.name}</h1>
-                <h1><span>Brand: </span>{product.brand}</h1>
-                <p><span>Category: </span>{product.category}</p>
-                <p><span>Price: </span>{product.price}</p>
+                <h1 className='text-2xl font-bold'>{product.name}</h1>
+                <h1 className='text-xl font-semibold'><span>Brand: </span>{product.brand}</h1>
+                <p className='text-xl font-semibold'><span>Category: </span>{product.category}</p>
+                <p className='text-xl font-semibold'><span>Price: </span>{product.price}</p>
                 <div className="rating">
                 {Array.from({ length: 5 }).map((_, index) => (
                 <input

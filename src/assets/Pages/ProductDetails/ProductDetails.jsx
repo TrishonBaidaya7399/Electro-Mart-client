@@ -54,15 +54,15 @@ const handleAddToCart = async (productId) => {
 
     return (
         <div className="">
-        <div className="drop-shadow-lg bg-gray-200 mx-[300px] my-[50px] ">
+        <div className="drop-shadow-lg bg-gray-200 mx-[20px] md:mx-[100px] lg:mx-[300px] my-[50px] ">
         <div className="prod-img mx-auto">
-        <img className="w-[100%] rounded-t-lg mx-auto" src={product.photo} alt="" />
+        <img className="w-[100%] pt-[20px] md:pt-[30px] rounded-t-lg mx-auto" src={product.photo} alt="" />
         </div>
         <div className="description p-4 text-center">
-            <h1>Name: {product.name}</h1>
-            <h1>Brand Name: {product.brand}</h1>
-            <p>Type: {product.category}</p>
-            <p>Price: ${product.price}</p>
+            <h1 className='text-3xl font-bold'>{product.name}</h1>
+            <h1 className='text-xl font-semibold'>Brand: {product.brand}</h1>
+            <p className='text-xl font-semibold'>Type: {product.category}</p>
+            <p className='text-xl font-semibold'>Price: ${product.price}</p>
             <div className="rating">
                 {Array.from({ length: 5 }).map((_, index) => (
                 <input
@@ -78,7 +78,7 @@ const handleAddToCart = async (productId) => {
         </div>
         <div className=" flex items-center justify-center">
         <Link className="">
-        <button onClick={()=>handleAddToCart(product._id)} className="text-white font-bold text-xl bg-black rounded-full px-6 py-2 w-[20vw] mb-12">Add to cart</button>
+        <button onClick={()=>handleAddToCart(product._id)} className="text-white font-bold text-xl bg-black rounded-full px-6 py-2  mb-12">Add to cart</button>
         </Link>
         </div>
     </div>
