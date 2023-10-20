@@ -1,9 +1,20 @@
 // import PropTypes from 'prop-types';
 
+import { useLoaderData } from "react-router-dom";
+import Brands from "../../Components/Brands/Brands";
+import Header from "../../Components/Header/Header";
+import PopularProducts from "../../Components/PopularProducts/PopularProducts";
+import ProductCategories from "../ProductCategories/ProductCategories";
+
 const Home = () => {
+    const products = useLoaderData();
+    console.log(products.length);
     return (
         <div>
-           <h1 className="text-xl font-bold">Home page</h1> 
+           <Header/>
+           <Brands/>
+           <ProductCategories/>
+           <PopularProducts products={products}/>
         </div>
     );
 };

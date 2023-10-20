@@ -8,6 +8,22 @@ import {
 import Root from './assets/Root.jsx';
 import Error from './Error Page/Error';
 import Home from './assets/Pages/Home/Home';
+import SignIn from './assets/Pages/SignIn Page/SignIn';
+// import SignUp from './assets/Pages/SignUp Page/SignUp';
+import AuthProvider from './Providers/AuthProvider';
+import AddProducts from './assets/Pages/AddProducts/AddProducts';
+import SignUp from './assets/Pages/SignUp Page/SignUp';
+import SonyItems from './assets/Pages/CategoryItems/SonyItems';
+import ProductDetails from './assets/Pages/ProductDetails/ProductDetails';
+import UpdateProduct from './assets/Pages/UpdateProduct/UpdateProduct';
+import AddToCart from './assets/Pages/AddToCart/AddToCart';
+import SamsungItems from './assets/Pages/CategoryItems/SamsungItems';
+import AppleItems from './assets/Pages/CategoryItems/AppleItems';
+import RealmiItems from './assets/Pages/CategoryItems/RealmiItems';
+import GoogleItems from './assets/Pages/CategoryItems/GoogleItems';
+import IntelItems from './assets/Pages/CategoryItems/IntelItems';
+import PrivateRoute from './Providers/PrivateRoute';
+
 
 
 const router = createBrowserRouter([
@@ -18,7 +34,64 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <Home/>,
+        loader: () => fetch('http://localhost:5000/product'),
+      },
+      {
+        path: "/signin",
+        element: <SignIn/>
+      },
+      {
+        path: "/signup",
+        element: <SignUp/>
+      },
+      {
+        path: "/addproduct",
+        element: <PrivateRoute><AddProducts/></PrivateRoute>
+      },
+      {
+        path: "/updateproduct/:id",
+        element: <PrivateRoute><UpdateProduct/></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: "/sonyitems",
+        element: <PrivateRoute><SonyItems/></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/product'),
+      },
+      {
+        path: "/samsungitems",
+        element: <PrivateRoute><SamsungItems/></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/product'),
+      },
+      {
+        path: "/appleitems",
+        element: <PrivateRoute><AppleItems/></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/product'),
+      },
+      {
+        path: "/realmiitems",
+        element: <PrivateRoute><RealmiItems/></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/product'),
+      },
+      {
+        path: "/googleitems",
+        element: <PrivateRoute><GoogleItems/></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/product'),
+      },
+      {
+        path: "/intelitems",
+        element: <PrivateRoute><IntelItems/></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/product'),
+      },
+      {
+        path: "/productdetails/:id",
+        element: <PrivateRoute><ProductDetails/></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path: "/addtocart",
+        element: <PrivateRoute><AddToCart/></PrivateRoute>
       },
     ]
   },
@@ -27,6 +100,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
