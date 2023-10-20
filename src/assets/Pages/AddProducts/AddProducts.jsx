@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { BsArrowLeft } from 'react-icons/bs';
 import Swal from 'sweetalert2'
 
 const bgStyle = {
@@ -69,9 +67,8 @@ const AddProducts = () => {
     };
 
     return (
-        <div style={bgStyle} className="py-[70px]">
-            <NavLink className={"flex gap-2 items-center mx-[150px] text-[30px] font-bold"} to="/"><BsArrowLeft/>Back to home</NavLink>
-            <div className="bg-gray-200 w-[80%] mx-auto mt-[50px] py-[70px]">
+        <div style={bgStyle} className="py-[20px] md:py-[70px]">
+            <div className="bg-gray-200 w-[80%] mx-auto mt-[50px] py-[20px] md:py-[70px]">
                 <h1 className="text-center text-[45px] text-[#374151]">Add New Product</h1>
                 <form onSubmit={handleAdd} className="w-[80%] mx-auto">
                     <div className="mt-6">
