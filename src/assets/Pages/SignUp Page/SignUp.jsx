@@ -1,20 +1,36 @@
-// import PropTypes from 'prop-types';
-// import { AiOutlineUser } from 'react-icons/ai';
 import { useContext, useState,  } from "react";
-
-// import Swal from "sweetalert2";
-import { NavLink } from "react-router-dom";
+import { FcGoogle } from 'react-icons/fc';
+import { NavLink, useNavigate } from "react-router-dom";
 import { BsArrowLeft } from 'react-icons/bs';
 import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 
 const SignUp = () => {
-    const {createUser, updateUserProfile}= useContext(AuthContext);
+    const {createUser, updateUserProfile, signInWithGoogle}= useContext(AuthContext);
      const [passwordError, setPasswordError] = useState(""); 
-     const [error, setError] = useState('')
+     const [error, setError] = useState('');
+     const navigate = useNavigate()
 
     // const [user, setUser] = useState(null)
+    const handleGoogleSignIn = ()=>{
+        signInWithGoogle()
+        .then(result=>{
+          console.log(result.user);
+          console.log('Successfully Logged In with Google!');
+          navigate("/")
+        })
+        .catch(error=>{
+          console.error(error.message);
+          setError(error);
+          Swal.fire({
+            title: 'Error!',
+            text: error.message,
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
+        })
+      }
     const handleSignUp = e =>{
         e.preventDefault();
 
@@ -44,7 +60,12 @@ const SignUp = () => {
               })
               .catch((error) => {
                 console.error(error.message);
-                // Handle any errors that may occur during the profile update.
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
               });
             const createdAt = result.user?.metadata?.creationTime;
             const user ={name, email, photo, createdAt }
@@ -119,6 +140,7 @@ const SignUp = () => {
                    )}
                 <input type="submit" value="Sign Up" className="w-full mt-6 bg-[#D2B48C] border-2 border-[#331A15] rounded-md py-4 text-center text-[#331A15] font-bold" />
                 <NavLink to="/signin"><p className="text-red-600">Already have an Account? Please Sign In</p></NavLink>
+                <button onClick={handleGoogleSignIn} className="mt-4 border-[3px] bg-white border-t-red-600 border-l-yellow-300 border-b-green-500 border-r-blue-600 rounded-lg px-4 py-1 w-fit mx-auto flex items-center font-semibold gap-2"><FcGoogle/> Login with Google</button>
             </form>
 
            </div>

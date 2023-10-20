@@ -28,6 +28,12 @@ const SignIn = () => {
         .catch(error=>{
           console.error(error.message);
           setError(error);
+          Swal.fire({
+            title: 'Error!',
+            text: error.message,
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
         })
       }
 
@@ -56,6 +62,12 @@ const SignIn = () => {
         .catch(error=> {
             console.error(error.message);
             setError(error.message)
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
         })
        
 
