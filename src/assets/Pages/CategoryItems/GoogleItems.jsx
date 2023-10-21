@@ -9,19 +9,19 @@ const GoogleItems = () => {
   console.log(products);
     const data = [
         {
-          image: "https://i.ibb.co/g66Z98r/samsung-ad-01.jpg",
+          image: "https://i.ibb.co/7vf04Nm/google-ad-banner1.png",
        
         },
         {
-          image: "https://i.ibb.co/PM5tgg0/sony-ad-03.jpg",
+          image: "https://i.ibb.co/0rdbYcG/google-ad-banner2.jpg",
        
         },
         {
-          image: "https://i.ibb.co/nbbqqGr/ad1.jpg",
+          image: "https://i.ibb.co/3sqSGmG/google-ad-banner3.webp",
          
         },
         {
-          image: "https://i.ibb.co/mqkLtqc/samsung-ad-03.jpg",
+          image: "https://i.ibb.co/9W2gL1Q/google-ad-banner4.png",
          
         },
         {

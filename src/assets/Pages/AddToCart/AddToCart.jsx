@@ -10,7 +10,7 @@ const AddToCart = () => {
     const currentUser = { _id: user._id }; 
 
     useEffect(() => {
-        fetch('https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/cartitems') // Update the URL to match your server endpoint
+        fetch('https://electro-mart-server-ten.vercel.app/cartitems') // Update the URL to match your server endpoint
             .then((response) => response.json())
             .then((cartItems) => {
                 const itemsAdded = cartItems.filter((item) => item.userId === currentUser._id);
@@ -41,8 +41,8 @@ const AddToCart = () => {
         });
     };
     const handleDelete = (productId) => {
-        console.log(productId);
-        fetch(`https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/cartitems/${productId}`, {
+        console.log(productId);                             
+        fetch(`https://electro-mart-server-ten.vercel.app/cartitems/${productId}`, {
             method: "DELETE"
         })
         .then(res=> res.json())
@@ -69,28 +69,28 @@ const AddToCart = () => {
                     {addedProduct.map((product, index) => (
                         <div key={index}>
                             <div className="border-2 rounded-xl border-gray-300 w-full flex p-6 my-6 items-center">
-                                <div className=" flex items-center w-[180px] h-[100px] justify-center rounded-lg mr-8">
-                                    <img src={product.photo} alt="" className="w-full rounded-lg" />
+                                <div className=" flex items-center w-[100px]  md:w-[180px] justify-center rounded-lg mr-8">
+                                    <img src={product.photo} alt="" className="h-[170px] rounded-lg" />
                                 </div>
                                 <div>
-                                    <h1 className="text-[24px] font-bold">{product.name}</h1>
-                                    <h1 className="text-[20px] font-semibold text-gray-500 pb-[15px]">{product.brand}</h1>
+                                    <h1 className="text-[18px] lg:text-[24px] font-bold">{product.name}</h1>
+                                    <h1 className="text-[16px] lg:text-[20px] font-semibold text-gray-500 pb-[15px]">{product.brand}</h1>
                                     <div className="flex gap-4 pb-4">
-                                        <div className="py-2 px-4 text-xl text-[#9873FF] border-2 border-[#9873FF] rounded-lg">
+                                        <div className="text-xl text-[#9873FF] rounded-lg">
                                             {product.category}
                                         </div>
-                                        <div className="py-2 px-4 text-xl text-[#9873FF] border-2 border-[#9873FF] rounded-lg">${product.price}</div>
+                                        <div className="text-xl text-[#9873FF] rounded-lg">${product.price}</div>
                                     </div>
                                 </div>
                                 <div className="flex ml-auto items-center flex-col">
 
                                         <NavLink className="bg-none rounded-lg">
-                                            <button onClick={()=>handleDelete(product._id)} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white text-[18px] py-[10px] px-[18px]">
+                                            <button onClick={()=>handleDelete(product._id)} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white text-[14px] md:text-[18px] md:py-[10px] md:px-[18px]">
                                                 DELETE
                                             </button>
                                         </NavLink>
                                         <NavLink className="bg-none rounded-lg">
-                                            <button onClick={handleBuyNow} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white text-[18px] py-[10px] px-[18px]">
+                                            <button onClick={handleBuyNow} className="btn bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white text-[14px] md:text-[18px] md:py-[10px] md:px-[18px]">
                                                 Buy
                                             </button>
                                         </NavLink>

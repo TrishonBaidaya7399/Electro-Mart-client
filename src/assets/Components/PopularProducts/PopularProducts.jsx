@@ -16,7 +16,7 @@ const PopularProducts = ({ products }) => {
   return (
     <div className="mb-6 md:mb-12 text-center">
       <h1 className="text-4xl md:text-6xl text-center font-bold py-12">Just For You</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-[100px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-[20px] md:mx-[50px] lg:mx-[100px]">
         {
         products.slice(0, visibleProducts).map((product) => (
           <div key={product._id} className="bg-gray-200 rounded-xl p-8">
@@ -25,7 +25,7 @@ const PopularProducts = ({ products }) => {
               <h className="title text-xl font-semibold">{product.name}</h>
               <div className="">
                 <p className="text-blue-600">Save $100</p>
-                <p>{`From ${product.price}`}</p>
+                <p>${`From ${product.price}`}</p>
               </div>
               <Link to={`/productdetails/${product._id}`}>
                 <button className="rounded-full mt-2 px-6 py-2 bg-black hover.bg-white border-2 border-black font-semibold duration-200 text-white hover.text-black">

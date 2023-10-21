@@ -9,19 +9,19 @@ const RealmiItems = () => {
   console.log(products);
     const data = [
         {
-          image: "https://i.ibb.co/g66Z98r/samsung-ad-01.jpg",
+          image: "https://i.ibb.co/58wwwXQ/realmi-ad-banner1.jpg",
        
         },
         {
-          image: "https://i.ibb.co/PM5tgg0/sony-ad-03.jpg",
+          image: "https://i.ibb.co/5rqPD1Q/realmi-ad-banner2.jpg",
        
         },
         {
-          image: "https://i.ibb.co/nbbqqGr/ad1.jpg",
+          image: "https://i.ibb.co/XS5BDv9/realmi-ad-banner3.png",
          
         },
         {
-          image: "https://i.ibb.co/mqkLtqc/samsung-ad-03.jpg",
+          image: "https://i.ibb.co/Vj33y1k/realmi-ad-banner4.png",
          
         },
         {

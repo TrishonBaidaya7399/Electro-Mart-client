@@ -9,19 +9,19 @@ const AppleItems = () => {
   console.log(products);
     const data = [
         {
-          image: "https://i.ibb.co/g66Z98r/samsung-ad-01.jpg",
+          image: "https://i.ibb.co/3Rvb1rN/apple-ad-banner1.jpg",
        
         },
         {
-          image: "https://i.ibb.co/PM5tgg0/sony-ad-03.jpg",
+          image: "https://i.ibb.co/sVqj8bm/apple-ad-banner2.jpg",
        
         },
         {
-          image: "https://i.ibb.co/nbbqqGr/ad1.jpg",
+          image: "https://i.ibb.co/gtCZxfL/apple-ad-banner3.jpg",
          
         },
         {
-          image: "https://i.ibb.co/mqkLtqc/samsung-ad-03.jpg",
+          image: "https://i.ibb.co/wJPTyf7/apple-ad-banner4.jpg",
          
         },
         {

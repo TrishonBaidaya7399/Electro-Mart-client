@@ -7,13 +7,13 @@ const Product = ({product}) => {
 <div className="pb-6">
             <div className="drop-shadow-lg text-center w-fit border-2 border-gray-400 p-4  rounded-md">
             <div className="prod-img w-[200px] h-[200px] mx-auto">
-            <img className="h-full rounded-t-lg" src={product.photo} alt="" />
+            <img className="h-full w-full rounded-t-lg" src={product.photo} alt="" />
             </div>
             <div className="description p-4">
                 <h1 className='text-2xl font-bold'>{product.name}</h1>
                 <h1 className='text-xl font-semibold'><span>Brand: </span>{product.brand}</h1>
                 <p className='text-xl font-semibold'><span>Category: </span>{product.category}</p>
-                <p className='text-xl font-semibold'><span>Price: </span>{product.price}</p>
+                <p className='text-xl font-semibold'><span>Price: $</span>{product.price}</p>
                 <div className="rating">
                 {Array.from({ length: 5 }).map((_, index) => (
                 <input

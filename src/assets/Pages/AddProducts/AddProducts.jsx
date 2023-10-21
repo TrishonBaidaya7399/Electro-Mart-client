@@ -44,7 +44,7 @@ const AddProducts = () => {
 
 
         // send data to the server
-        fetch('https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/product',{
+        fetch('https://electro-mart-server-ten.vercel.app/product',{
             method: "POST",
             headers: {
                 "content-type":"application/json"

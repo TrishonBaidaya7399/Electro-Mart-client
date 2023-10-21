@@ -9,19 +9,19 @@ const SamsungItems = () => {
   console.log(products);
     const data = [
         {
-          image: "https://i.ibb.co/g66Z98r/samsung-ad-01.jpg",
+          image: "https://i.ibb.co/wdjmx6S/samsung-add-banner-01.jpg",
        
         },
         {
-          image: "https://i.ibb.co/PM5tgg0/sony-ad-03.jpg",
+          image: "https://i.ibb.co/CH8NwdQ/samsung-add-banner-02.jpg",
        
         },
         {
-          image: "https://i.ibb.co/nbbqqGr/ad1.jpg",
+          image: "https://i.ibb.co/yn6gQmc/samsung-ad-01.jpg",
          
         },
         {
-          image: "https://i.ibb.co/mqkLtqc/samsung-ad-03.jpg",
+          image: "https://i.ibb.co/ccSCfgf/samsung-ad-02.jpg",
          
         },
         {

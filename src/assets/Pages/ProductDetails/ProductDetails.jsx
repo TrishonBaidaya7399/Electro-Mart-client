@@ -20,7 +20,7 @@ const handleAddToCart = async (productId) => {
   };
 
   try {
-    const response = await fetch('https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/cartitems', {
+    const response = await fetch('https://electro-mart-server-ten.vercel.app/cartitems', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

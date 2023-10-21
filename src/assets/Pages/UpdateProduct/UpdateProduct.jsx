@@ -46,7 +46,7 @@ const UpdateProduct = () => {
 
                 // send data to the server
                 console.log(`id: ${loadedProduct._id}`);
-        fetch(`https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/product/${loadedProduct._id}`,{
+        fetch(`https://electro-mart-server-ten.vercel.app/product/${loadedProduct._id}`,{
             method: "PUT",
             headers: {
                 "content-type":"application/json"

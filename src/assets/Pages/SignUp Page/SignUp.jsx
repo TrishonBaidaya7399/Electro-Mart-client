@@ -70,7 +70,7 @@ const SignUp = () => {
             const createdAt = result.user?.metadata?.creationTime;
             const user ={name, email, photo, createdAt }
             //https://coffee-shop-server-nine.vercel.app
-            fetch('https://electro-mart-server-7dzz1fbbh-trishon-baidayas-projects.vercel.app/user', {
+            fetch('https://electro-mart-server-ten.vercel.app/user', {
                 method: "POST",
                 headers: {
                     'content-type': "application/json"
